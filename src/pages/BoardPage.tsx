@@ -1,21 +1,20 @@
 import { BoardFormProps } from "../components/MainBoard/ScrumBoard/ScrumBoard.types"
 import { useBoardContext } from "../contexts/BoardContext/BoardContext";
-import { auth } from "../services/http/patika/endpoints/auth";
+import { board } from "../services/http/patika/endpoints/board";
 import { useNavigate } from "react-router";
 import ScrumBoard from "../components/MainBoard/ScrumBoard";
 import { BoardFormValuesProps } from "../components/MainBoard/ScrumBoard/ScrumBoard.types";
 
 const BoardPage = () => {
   const navigate = useNavigate();
-  const { setState, state } = useBoardContext();
-  console.log(state)
+  const { getBoards, state,  } = useBoardContext();
   const handleBoardRegister: BoardFormProps["onBoardRegister"] = (values) => {
    
-    auth.board(values).then(({ data }) => {
-      setState([data])
+    board.board(values).then(({ data }) => {
+      getBoards()
       navigate(`/board/${data.id}`)
+
     }) 
-      
     
   };
 

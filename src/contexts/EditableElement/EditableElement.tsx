@@ -1,33 +1,25 @@
-import React, { useRef, useEffect, ReactHTMLElement } from "react";
+import React, { useRef, useEffect, ReactHTMLElement, useState } from "react";
 import { EditableElementProps } from "./EditableElement.types";
 import { FC } from "react";
+import {board} from "../../services/http/patika/endpoints/board/index"
+import { useBoardContext } from "../../contexts/BoardContext/BoardContext";
+
 
 const EditableElement = (props: any) => {
-  const { onChange } = props;
-  const element = useRef<HTMLInputElement | null>(null);
-  let elements: any = React.Children.toArray(props.children);
-  if (elements.length > 1) {
-    throw Error("Can't have more than one child");
-  }
+  const { getBoards  } = useBoardContext();
+  const editRef = useRef(null)
   const onMouseUp = (element: any) => {
-    const value = element.current?.value || element.current?.innerText;
-    if (onChange) {
-      onChange(value);
-    }
+    const vr =document.querySelector('#editable')?.innerHTML
+    console.log(vr)
+    board.updateBoard({
+      title: vr,
+      members: [],
+      id: props.id
+    }).then(() => getBoards() ) 
+
   };
-  useEffect(() => {
-    const value = element.current?.value || element.current?.innerText;
-    if (onChange) {
-      onChange(value);
-    }
-  }, []);
-  elements= React.cloneElement(elements[0], {
-    contentEditable: true,
-    suppressContentEditableWarning: true,
-    ref: element,
-    onKeyUp: onMouseUp
-  });
-  return elements;
+
+  return <p id="editable" onMouseOut={onMouseUp} contenteditable="true">This is an editable paragraph.</p>
 };
 
 export default EditableElement;

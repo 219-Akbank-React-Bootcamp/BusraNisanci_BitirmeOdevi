@@ -4,21 +4,37 @@ import { useBoardContext } from "../../../contexts/BoardContext/BoardContext";
 import AddBoardButton from "./AddBoardButton";
 
 const ScrumBoard=(props: any) => {
-  const { setState, state } = useBoardContext();
+  const {  state } = useBoardContext();
   const [boardFormValues, setBoardFormValues] = useState<BoardFormValuesProps>({
     title: "Untitled Board",
     members: []
   });
-  
+  console.log(state)
+  // useEffect(()=> {
+  //   fetchBoard().then(data=> setState(data));
+  // }, []);
   const handleAddBoard = (e:any) => {
     e.preventDefault()
     props.onBoardRegister(boardFormValues);
   };
   
-
+// async function fetchBoard() {
+//   const response = await fetch('/board');
+//   const data= await response.json();
+//   return data.state
+  
+// }
   return (
-    <div className="w-screen h-screen flex justify-center content-center m-2 p-2">
-     {state.length >= 0 && (<div className="flex justify-center"><AddBoardButton /></div>)}
+    <div className=" h-screen flex justify-center content-center m-2 p-2">
+     {state.length >= 0 && 
+     <div className="flex justify-center flex-wrap">
+     {state.map((brd) => {
+      return (
+      <AddBoardButton boardInfo={brd} />
+      )
+     })}
+     </div>
+     }
         <form>
           <button
           type="submit"
