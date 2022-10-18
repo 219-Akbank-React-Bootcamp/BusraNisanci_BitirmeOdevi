@@ -9,19 +9,16 @@ export type BoardFormValuesProps = {}
 
 const Layout = () => {
   const { setState, state } = useBoardContext();
+  const {currentBoard, setCurrentBoard } = useBoardContext();
+
   const { id } = useParams()
-  const [currentBoard, setCurrentBoard] = useState(null)
-  useEffect(() => {
-    const selectedBoard:any = state.find((brd:any) => id == brd.id )
-    setCurrentBoard(selectedBoard)
-    
-  }, [])
+ 
   
   return (
     <div>
     
-      <Navbar currentBoard={currentBoard} />
-      <Board currentBoard={currentBoard} />
+      <Navbar  />
+      <Board />
       
     </div>
   )

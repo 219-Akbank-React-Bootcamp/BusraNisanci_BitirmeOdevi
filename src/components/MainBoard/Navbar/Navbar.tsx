@@ -6,9 +6,10 @@ import EditableElement from "../../../contexts/EditableElement/EditableElement";
 import { useLoginContext } from "../../../contexts/LoginContext/LoginContext"
 import { useBoardContext } from "../../../contexts/BoardContext/BoardContext";
 
-const Navbar = ({currentBoard}:any) => {
+const Navbar = () => {
   const { logout, username } = useLoginContext()
   const { setState, state } = useBoardContext()
+  const { currentBoard, setCurrentBoard} = useBoardContext()
   const navigate = useNavigate();
   const handleLogout = () => {
     logout()
