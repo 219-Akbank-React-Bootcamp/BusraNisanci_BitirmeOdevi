@@ -9,7 +9,7 @@ const ScrumBoard=(props: any) => {
     title: "Untitled Board",
     members: []
   });
-  console.log(state)
+  
   // useEffect(()=> {
   //   fetchBoard().then(data=> setState(data));
   // }, []);
@@ -28,7 +28,7 @@ const ScrumBoard=(props: any) => {
     <div className=" h-screen flex justify-center content-center m-2 p-2">
      {state.length >= 0 && 
      <div className="flex justify-center flex-wrap">
-     {state.map((brd) => {
+     {state.map((brd:any) => {
       return (
       <AddBoardButton boardInfo={brd} />
       )

@@ -1,10 +1,10 @@
 
 
 export type CardRequestPayload = {
-    title: "Untitled Card",
+    title: string,
     listId:number,
     order: number,
     description: string,
-    duedate: Date, 
+    duedate: any, 
     
 }

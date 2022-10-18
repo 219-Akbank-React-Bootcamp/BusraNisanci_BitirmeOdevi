@@ -21,7 +21,7 @@ const Layout = () => {
     <div>
     
       <Navbar currentBoard={currentBoard} />
-      <Board />
+      <Board currentBoard={currentBoard} />
       
     </div>
   )

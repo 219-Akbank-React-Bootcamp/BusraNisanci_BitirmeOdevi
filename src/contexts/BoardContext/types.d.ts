@@ -1,22 +1,23 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type StateType = {
-    find(arg0: (brd: any) => boolean): unknown;
+    updateBoard: any;
     id: any;
     board: Array<{
-      title: string
-      members:Array}>
+      title: string,
+      members:Array
+    }>;
     list: Array<{
       title: string,
       boardId?:number,
-      order?: number,}>
+      order?: number,}>;
     card:Array<{
       title: string,
       listId:number,
       order: number,
       description: string,
       duedate: Date,
-    }>
+    }>;
   }
   
   export type ContextType = {

@@ -14,6 +14,7 @@ export const initialState: StateType = {
   board: [],
   list: [],
   card: [],
+  
 }
 
 export const BoardContext = createContext<ContextType>({
