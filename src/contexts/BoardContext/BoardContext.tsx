@@ -1,47 +1,45 @@
 import {
-    Children,
   createContext,
   FC,
   PropsWithChildren,
-  ReactNode,
   useContext,
   useEffect,
   useState,
-} from 'react'
+} from "react";
 import { board } from "../../services/http/patika/endpoints/board";
-import { StateType, ContextType } from './types'
-
+import { StateType, ContextType } from "./types";
+import { list } from "../../services/http/patika/endpoints/list";
 
 export const initialState: StateType = {
   board: [],
   list: [],
   card: [],
-  
-}
+};
 
 export const BoardContext = createContext<ContextType>({
-  state: initialState,
+  state: [],
   setState: () => {},
   getBoards: () => {},
+  currentBoard: [],
   setCurrentBoard: () => {},
-  currentBoard: Array
-})
- 
-export const BoardProvider: FC<PropsWithChildren> = ({children}) => {
-  const [state, setState] = useState<StateType>(initialState)
-  const [currentBoard, setCurrentBoard] = useState<ContextType>()
-  useEffect(() => {
-    getBoards()
-  }, [])
+  getLists: () => {},
+  currentLists: [],
+});
 
-  const getBoards = async() => {
-    await board.getBoardAll().then((res) => setState(res.data)) 
-  }
-  
+export const BoardProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [state, setState] = useState([]);
+  const [currentBoard, setCurrentBoard] = useState([]);
+  const [currentLists, setCurrentLists] = useState([]);
   useEffect(() => {
-    const selectedBoard:any = state.find((brd:any) => brd.id == state.id )
-    setCurrentBoard(selectedBoard)    
-  }, [])
+    getBoards();
+  }, []);
+
+  const getBoards = async () => {
+    await board.getBoardAll().then((res) => setState(res.data));
+  };
+  const getLists = async (id) => {
+    await list.getListById(id).then((res) => setCurrentLists(res.data));
+  };
 
   return (
     <BoardContext.Provider
@@ -51,13 +49,15 @@ export const BoardProvider: FC<PropsWithChildren> = ({children}) => {
         getBoards,
         currentBoard,
         setCurrentBoard,
+        getLists,
+        currentLists,
       }}
     >
       {children}
     </BoardContext.Provider>
-  )
-}
+  );
+};
 
-export const useBoardContext = ()=>{
-    return useContext(BoardContext)
-}
+export const useBoardContext = () => {
+  return useContext(BoardContext);
+};

@@ -13,7 +13,7 @@ const BoardPage = () => {
     board.board(values).then(({ data }) => {
       getBoards()
       navigate(`/board/${data.id}`)
-
+     
     }) 
     
   };

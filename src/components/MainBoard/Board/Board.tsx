@@ -4,16 +4,19 @@ import AddList from "../AddList";
 import ListCard from "../ListCard";
 
 const Board = () => {
-  const { setState, state } = useBoardContext();
-  const { currentBoard, setCurrentBoard } = useBoardContext()
-  
+  const { setState, state, currentLists } = useBoardContext();
+
   return (
     <div className="bg-[#fff] w-screen h-screen inline-flex p-4 font-sans ">
-      {/* {currentBoard.list.length >= 0 && currentBoard.list.map((lst:any) => {
-        return <div className="flex justify-center"><ListCard listInfos={lst} /></div>
-      })} */}
-      
-      
+      {currentLists.length >= 0 &&
+        currentLists.map((lst: any) => {
+          return (
+            <div className="flex justify-center">
+              <ListCard listInfos={lst} />
+            </div>
+          );
+        })}
+
       <AddList />
     </div>
   );
