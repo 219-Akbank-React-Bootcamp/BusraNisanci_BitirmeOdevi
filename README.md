@@ -1,6 +1,55 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Patika Final Ödevi
+Patika Kanban Board Projesi
+
+## Kullanilan Araclar
+
+TypeScript 
+
+Create react app
+
+React Router
+
+Axios
+
+TailwindCss
+
+## Calisan özellikler
+
+### SCRUMBOARD
+
+Scrumboard sayfasında Board ekleme,
+
+Eklenen Boardların başlıklarına göre scrumboard sayfasında görünmesi
+
+### BOARD
+
+Seçilen Board sayfasının görüntülenmesi
+
+Board güncelleme (Ad değiştirme),
+
+### LIST
+
+Liste ekleme,
+
+Liste silme.
+
+ ### CARD
+
+Card ekleme,
+
+Listeye göre card ları gösterme
+
+## Calismayan Özellikler
+
+
+
+Drag and drop kurulamadı.
+
+Boardlara kullanıcı ekleme ve çıkarma yapılmadı.
+
 
 ## Available Scripts
 
