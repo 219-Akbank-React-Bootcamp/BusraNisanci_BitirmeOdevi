@@ -16,9 +16,9 @@ Axios
 
 TailwindCss
 
-Calisan özellikler
+## Calisan özellikler
 
-SCRUMBOARD
+### SCRUMBOARD
 
 Scrumboard sayfasında Board ekleme,
 
