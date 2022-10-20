@@ -5,7 +5,7 @@ import ListCard from "../ListCard";
 
 const Board = () => {
   const { setState, state, currentLists } = useBoardContext();
-
+  console.log(currentLists);
   return (
     <div className="bg-[#fff] w-screen h-screen inline-flex p-4 font-sans ">
       {currentLists.length >= 0 &&

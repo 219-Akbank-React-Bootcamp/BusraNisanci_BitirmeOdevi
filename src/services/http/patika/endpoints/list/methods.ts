@@ -6,7 +6,7 @@ export const list = (payload: ListRequestPayload) =>
 
 export const getListAll = () => service.get("list");
 
-export const getListById = (id: number) => service.get(`list/?boardId=${id}`);
+export const getListById = (id: number) => service.get(`list/?id=${id}`);
 
 export const updateList = (payload: ListRequestPayload) =>
   service.put(`list/${payload.boardId}?id=${payload.boardId}`, {

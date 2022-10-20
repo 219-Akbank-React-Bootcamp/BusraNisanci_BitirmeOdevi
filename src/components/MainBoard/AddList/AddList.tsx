@@ -29,12 +29,11 @@ const AddList = (props: any) => {
   });
   const handleAddList = async (e: any) => {
     e.preventDefault();
-
     await list
-      .list({ title: currentBoard.title, boardId: currentBoard.id })
+      .list({ title: "UntitledList", boardId: currentBoard.id })
       .then(() => getLists(currentBoard.id));
   };
-  console.log(currentLists);
+
   return (
     <div>
       <div className="w-60 h-10 m-2 p-1 flex bg-[#6e654f] hover:bg-[#FFF4CF] my-1 rounded-md">
@@ -50,5 +49,3 @@ const AddList = (props: any) => {
 };
 
 export default AddList;
-
-// state.updateList(state, {list: setListFormValues}).then(() => getBoards() )

@@ -1,13 +1,10 @@
 import React from "react";
 
-
-const CardFooter = () => {
-  
+const CardFooter = ({ cardInfos }: any) => {
   return (
     <div className="inline-flex justify-between p-1 my-1">
-        {/* Eğer varsa Tarih ve checklist tamamlandı oranı görünecek */}
-        <div>CardTarih</div>
-        <div>Checked/Lenght</div>
+      {/* Eğer varsa Tarih ve checklist tamamlandı oranı görünecek */}
+      <div>{cardInfos.date}</div>
     </div>
   );
 };

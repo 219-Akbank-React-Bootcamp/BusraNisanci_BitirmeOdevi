@@ -9,6 +9,7 @@ import {
 import { board } from "../../services/http/patika/endpoints/board";
 import { StateType, ContextType } from "./types";
 import { list } from "../../services/http/patika/endpoints/list";
+import { card } from "../../services/http/patika/endpoints/card";
 
 export const initialState: StateType = {
   board: [],
@@ -30,6 +31,7 @@ export const BoardProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, setState] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentLists, setCurrentLists] = useState([]);
+
   useEffect(() => {
     getBoards();
   }, []);

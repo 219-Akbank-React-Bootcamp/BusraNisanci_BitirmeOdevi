@@ -9,7 +9,7 @@ import { useBoardContext } from "../../../contexts/BoardContext/BoardContext";
 const Navbar = ({ currentBoard }: any) => {
   const { logout, username } = useLoginContext();
   const { setState, state } = useBoardContext();
-
+  const { currentLists } = useBoardContext();
   const navigate = useNavigate();
   const handleLogout = () => {
     logout();
@@ -26,7 +26,7 @@ const Navbar = ({ currentBoard }: any) => {
       {/* Eğer Login ise ve bir board çağırılmışsa Board Adı Ortada Görünecek  ayrıca üzerine tıklandığında ismi deiğiştirebilmek için edit yapabilinecek */}
       <div className="boardName-div m-2 flex justify-center">
         <EditableElement id={currentBoard?.id}>
-          <div>{currentBoard?.title}</div>
+          <div></div>
         </EditableElement>
       </div>
 
